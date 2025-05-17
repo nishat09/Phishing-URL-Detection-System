@@ -36,13 +36,14 @@ if st.button("Check URL"):
 
         
 
-        st.write("Extracted Features:", features_df.columns)
+        phishing_confidence = confidence[1] * 100  # Phishing probability
+        legitimate_confidence = confidence[0] * 100  # Legitimate probability
 
         # Display the result
         if prediction == 1:
-            st.error(f"🚨 This URL is likely **Phishing** with a confidence of {confidence[1]:.2f}")
+            st.error(f"🚨 This URL is likely **Phishing** with a confidence of {phishing_confidence :.2f}%")
         else:
-            st.success(f"✅ This URL is likely **Legitimate** with a confidence of {confidence[0]:.2f}")
+            st.success(f"✅ This URL is likely **Legitimate** with a confidence of {legitimate_confidence:.2f}%")
     else:
         st.warning("⚠️ Please enter a URL to check.")
 
